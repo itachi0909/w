@@ -1,0 +1,38 @@
+import heapq
+
+def best_first_search(graph, start, goal):
+    queue = [(0, start)]  # Priority queue with tuple (priority, node)
+    visited = set()
+
+    while queue:
+        cost, current_node = heapq.heappop(queue)  # Get the node with the lowest cost
+        if current_node == goal:
+            return cost  # Return cost if goal is reached
+
+        if current_node not in visited:
+            visited.add(current_node)
+
+            for neighbor, neighbor_cost in graph[current_node].items():
+                if neighbor not in visited:
+                    heapq.heappush(queue, (neighbor_cost, neighbor))  # Add neighbors to the queue with their costs
+
+    return None  # Return None if goal is not reachable
+
+# Example graph representation (dictionary of dictionaries)
+graph = {
+    'A': {'B': 2, 'C': 1},
+    'B': {'A': 2, 'D': 3, 'E': 1},
+    'C': {'A': 1, 'F': 5},
+    'D': {'B': 3},
+    'E': {'B': 1, 'F': 3},
+    'F': {'C': 5, 'E': 3}
+}
+
+start_node = 'A'
+goal_node = 'F'
+
+result = best_first_search(graph, start_node, goal_node)
+if result is not None:
+    print(f"Cost from {start_node} to {goal_node}:", result)
+else:
+    print(f"No path found between {start_node} and {goal_node}.")
