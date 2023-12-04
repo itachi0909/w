@@ -1,0 +1,53 @@
+'''
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+'''
+
+def is_safe(board, row, col, N):
+    # Check if there is a queen in the same column up to the current row
+    for i in range(row):
+        if board[i][col] == 1:
+            return False
+
+    # Check upper diagonal on the left side
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    # Check upper diagonal on the right side
+    for i, j in zip(range(row, -1, -1), range(col, N)):
+        if board[i][j] == 1:
+            return False
+
+    return True
+
+def solve_n_queens_util(board, row, N, solutions):
+    if row == N:
+        solutions.append([row[:] for row in board])
+        return
+
+    for col in range(N):
+        if is_safe(board, row, col, N):
+            board[row][col] = 1
+            solve_n_queens_util(board, row + 1, N, solutions)
+            board[row][col] = 0  # Backtrack
+
+def solve_n_queens(N):
+    board = [[0 for _ in range(N)] for _ in range(N)]
+    solutions = []
+    solve_n_queens_util(board, 0, N, solutions)
+    return solutions
+
+# Example for N = 4
+N = 8
+solutions = solve_n_queens(N)
+print(f"Total solutions for {N}-Queens problem: {len(solutions)}")
+for idx, solution in enumerate(solutions, 1):
+    print(f"Solution {idx}:")
+    for row in solution:
+        print(' '.join('Q' if col == 1 else '.' for col in row))
+    print()

@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.competitive-programming {
+    background-color: #f0e68c; /* Pale Goldenrod */
+}
+
+.machine-learning {
+    background-color: #87cefa; /* Light Sky Blue */
+}
+
+a {
+    text-decoration: none;
+    color: #333; /* Dark gray */
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #333; /* Dark gray */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White */
+}
+/* Existing CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.competitive-programming {
+    background-color: #f0e68c; /* Pale Goldenrod */
+}
+
+.machine-learning {
+    background-color: #87cefa; /* Light Sky Blue */
+}
+
+a {
+    text-decoration: none;
+    color: #333; /* Dark gray */
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #333; /* Dark gray */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White */
+}
+
+/* Additional CSS for cp.html and ml.html */
+
+/* Add your specific CSS for cp.html and ml.html here, if needed */
+/* For example, you can add styling for the section headings or lists */
+/* You can also customize the font sizes, colors, and other visual elements */

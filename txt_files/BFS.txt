@@ -1,0 +1,38 @@
+from collections import deque
+
+def bfs(graph, start, end):
+    queue = deque([(start, [start])])
+    visited = set()
+
+    while queue:
+        current, path = queue.popleft()
+        visited.add(current)
+
+        if current == end:
+            return path
+
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                queue.append((neighbor, path + [neighbor]))
+                visited.add(neighbor)  # Mark neighbor as visited
+
+    return None  # No path found
+
+# Example graph representation (adjacency list)
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+start_node = 'A'
+end_node = 'F'
+result = bfs(graph, start_node, end_node)
+
+if result:
+    print(f"Shortest path between {start_node} and {end_node}: {result}")
+else:
+    print(f"No path found between {start_node} and {end_node}")

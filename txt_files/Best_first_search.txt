@@ -1,0 +1,40 @@
+from queue import PriorityQueue
+
+def best_first_search(graph, start, goal):
+    queue = PriorityQueue()
+    queue.put((0, start))  # Priority queue with (cost, node) tuple
+    visited = set()
+    visited.add(start)
+    
+    while not queue.empty():
+        cost, current_node = queue.get()
+        
+        if current_node == goal:
+            return True  # Goal node found
+        
+        for neighbor, neighbor_cost in graph[current_node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.put((neighbor_cost, neighbor))
+    
+    return False  # Goal node not reachable
+
+# Example graph representation (adjacency list)
+graph = {
+    'A': [('B', 5), ('C', 7)],
+    'B': [('D', 3)],
+    'C': [('E', 4)],
+    'D': [('F', 6)],
+    'E': [('F', 5)],
+    'F': []
+}
+
+start_node = 'A'
+goal_node = 'F'
+
+result = best_first_search(graph, start_node, goal_node)
+
+if result:
+    print(f"Goal node '{goal_node}' is reachable from '{start_node}' using Best-First Search.")
+else:
+    print(f"Goal node '{goal_node}' is not reachable from '{start_node}' using Best-First Search.")
